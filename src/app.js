@@ -21,13 +21,10 @@ app.get('/api/v1/test', (req, res) => {
 app.use('/api/v1', routes);
 
 mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGO_URI)
   .then(() => {
     app.listen(process.env.PORT || 5000, () => {
-      console.log('Server running...');
+      console.log(`Server running on port ${process.env.PORT}`);
     });
   })
   .catch((err) => {
